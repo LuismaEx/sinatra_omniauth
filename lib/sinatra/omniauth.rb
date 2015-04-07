@@ -130,8 +130,7 @@ module SinatraOmniAuth
           requires = a['require']
           require requires if requires
           provider = a['provider']
-          client_options = a[:client_options]
-          client_options = client_options ? {:client_options => client_options} : {}
+          client_options = a[:client_options] || {}
           if key = a['key']
             provider provider, key, a['secret'], client_options
           else
