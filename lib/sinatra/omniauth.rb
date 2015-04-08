@@ -241,7 +241,7 @@ module SinatraOmniAuth
         # if the user is currently signed in, he/she might want to add another account to signin
         if current_user
           if auth
-            flash.notice = 'You are now signed in using your' + @authhash[:provider].capitalize + ' account'
+            flash.notice = 'You are now signed in using your ' + @authhash[:provider].capitalize + ' account'
             session[:authentication_provider] = auth.provider   # They're now signed in using the new account
             redirect to('/auth/signedin')  # Already signed in, and we already had this authentication
           else
