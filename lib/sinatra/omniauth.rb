@@ -200,6 +200,7 @@ module SinatraOmniAuth
         @authhash = Hash.new
         oaeuh = omniauth['extra'] && omniauth['extra']['user_hash']
         oaui = omniauth['user_info']
+		oai = omniauth['info']
         if authentication_route == 'facebook'
           @authhash[:email] = oaeuh['email'] || ''
           @authhash[:name] = oaeuh['name'] || ''
@@ -221,8 +222,8 @@ module SinatraOmniAuth
           @authhash[:uid] = (omniauth['uid'] || '').to_s
           @authhash[:provider] = omniauth['provider'] || ''
 		elsif authentication_route == 'flickr'
-          @authhash[:email] = oaui['email'] || ''
-          @authhash[:name] = oaui['nickname'] || ''
+          @authhash[:email] = oai['email'] || ''
+          @authhash[:name] = oai['nickname'] || ''
           @authhash[:uid] = (omniauth['uid'] || '').to_s
           @authhash[:provider] = omniauth['provider'] || ''
         else
