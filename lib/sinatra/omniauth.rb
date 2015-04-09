@@ -212,8 +212,8 @@ module SinatraOmniAuth
           @authhash[:uid] = (oaeuh['id'] || '').to_s
           @authhash[:provider] = omniauth['provider'] || ''
         elsif ['google', 'yahoo', 'linked_in', 'twitter', 'myopenid', 'openid', 'open_id'].index(authentication_route) != nil
-          @authhash[:email] = oaui['email'] || ''
-          @authhash[:name] = oaui['name'] || ''
+          @authhash[:email] = oai['email'] || ''
+          @authhash[:name] = oai['nickname'] || ''
           @authhash[:uid] = (omniauth['uid'] || '').to_s
           @authhash[:provider] = omniauth['provider'] || ''
         elsif authentication_route == 'aol'
