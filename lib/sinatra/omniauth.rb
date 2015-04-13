@@ -204,7 +204,7 @@ module SinatraOmniAuth
         if authentication_route == 'facebook'
           @authhash[:email] = oai['email'] || ''
           @authhash[:name] = oai['name'] || ''
-          @authhash[:uid] = oai['uid'] || ''
+          @authhash[:uid] = oaeuh['id'] || ''
           @authhash[:provider] = omniauth['provider'] || ''
         elsif authentication_route == 'github'
           @authhash[:email] = oaui['email'] || ''
