@@ -198,13 +198,13 @@ module SinatraOmniAuth
 
         # create a new regularised authentication hash
         @authhash = Hash.new
-        oaeuh = omniauth['extra'] && omniauth['extra']['user_hash']
+        oaeuh = omniauth['extra'] && omniauth['extra']['user_hash'] && omniauth['extra']['raw_info']
         oaui = omniauth['user_info']
 		oai = omniauth['info']
         if authentication_route == 'facebook'
           @authhash[:email] = oai['email'] || ''
           @authhash[:name] = oai['name'] || ''
-          @authhash[:uid] = oai['uid'] || ''
+          @authhash[:uid] = oaeuh['uid'] || ''
           @authhash[:provider] = omniauth['provider'] || ''
         elsif authentication_route == 'github'
           @authhash[:email] = oaui['email'] || ''
