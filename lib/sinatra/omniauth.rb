@@ -198,7 +198,7 @@ module SinatraOmniAuth
 
         # create a new regularised authentication hash
         @authhash = Hash.new
-        oaeuh = omniauth['extra'] && omniauth['extra']['user_hash'] && omniauth['extra']['raw_info']
+        oaeuh = omniauth['extra'] && omniauth['extra']['user_hash'] && omniauth['credentials']['extra']['raw_info']
         oaui = omniauth['user_info']
 		oai = omniauth['info']
         if authentication_route == 'facebook'
