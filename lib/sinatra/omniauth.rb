@@ -264,7 +264,7 @@ module SinatraOmniAuth
           end
 
           if email = @authhash[:email] and email != '' and
-            auth = Authentication.first(:email => email)
+            auth = Authentication.first(:user_email => email)
             # Would have been seen as a new user, but instead we found that we know their email address already
             provider = @authhash[:provider]
             auth = auth.user.authentications.create!(
