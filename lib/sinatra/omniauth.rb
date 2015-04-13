@@ -200,7 +200,7 @@ module SinatraOmniAuth
         @authhash = Hash.new
         oaeuh = omniauth['extra'] && omniauth['extra']['user_hash'] && omniauth['credentials']['extra']['raw_info']
         oaui = omniauth['user_info']
-		oai = omniauth['info'] && omniauth['credentials']['info']
+		oai = omniauth['info']
         if authentication_route == 'facebook'
           @authhash[:email] = oai['email'] || ''
           @authhash[:name] = oai['name'] || ''
