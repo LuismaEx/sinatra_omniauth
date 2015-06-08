@@ -228,6 +228,7 @@ module SinatraOmniAuth
           @authhash[:provider] = omniauth['provider'] || ''
 	    elsif authentication_route == 'instagram'
           @authhash[:email] = oai['email'] || ''
+          @authhash[:code] = params['code']
           @authhash[:name] = oai['nickname'] || ''
           @authhash[:uid] = (omniauth['uid'] || '').to_s
           @authhash[:provider] = omniauth['provider'] || ''
@@ -289,7 +290,7 @@ module SinatraOmniAuth
           @current_user = User.create()
           session[:user_id] = @current_user.id
           session[:user_name] = @authhash[:name] if @authhash[:name] != ''
-          auth = current_user.authentications.create!(:provider => @authhash[:provider], :uid => @authhash[:uid], :user_name => @authhash[:name], :user_email => @authhash[:email])
+          auth = current_user.authentications.create!(:provider => @authhash[:provider], :uid => @authhash[:uid], :user_name => @authhash[:name], :user_email => @authhash[:email], :code => @authhash[:code])
           session[:authentication_provider] = auth.provider
           redirect to('/auth/welcome')
         end
