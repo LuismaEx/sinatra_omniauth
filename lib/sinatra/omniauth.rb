@@ -130,12 +130,7 @@ module SinatraOmniAuth
           requires = a['require']
           require requires if requires
           provider = a['provider']
-		  if provider == 'identity'
-			options = a[:client_options] || {}
-			client_options = { :on_failed_registration => "redirect to('/')" }.merge(options)
-		  else
-            client_options = a[:client_options] || {}
-		  end
+          client_options = a[:client_options] || {}
           if key = a['key']
             provider provider, key, a['secret'], client_options
           else
