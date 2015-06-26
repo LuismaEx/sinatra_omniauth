@@ -131,7 +131,8 @@ module SinatraOmniAuth
           require requires if requires
           provider = a['provider']
 		  if provider == 'identity'
-			client_options = { :on_failed_registration => "redirect to('/')" }.merge(a[:client_options])
+			options = a[:client_options] || {}
+			client_options = { :on_failed_registration => "redirect to('/')" }.merge(options)
 		  else
             client_options = a[:client_options] || {}
 		  end
