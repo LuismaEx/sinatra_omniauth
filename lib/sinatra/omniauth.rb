@@ -138,6 +138,9 @@ module SinatraOmniAuth
             store = OpenID::Store::Filesystem.new(a['store']||'./tmp')
             provider provider, :store => store, :name => name, :identifier => a['identifier']
           end
+		  if provider == 'identity'
+			:on_failed_registration => redirect to('/')
+		  end
         end
       end
 
