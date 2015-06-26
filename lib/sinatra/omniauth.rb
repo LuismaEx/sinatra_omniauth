@@ -130,7 +130,11 @@ module SinatraOmniAuth
           requires = a['require']
           require requires if requires
           provider = a['provider']
-          client_options = a[:client_options] || {}
+		  if provider == 'identity'
+			client_options = { :on_failed_registration => redirect to('/') }.merge(a[:client_options])
+		  else
+            client_options = a[:client_options] || {}
+		  end
           if key = a['key']
             provider provider, key, a['secret'], client_options
           else
@@ -138,9 +142,6 @@ module SinatraOmniAuth
             store = OpenID::Store::Filesystem.new(a['store']||'./tmp')
             provider provider, :store => store, :name => name, :identifier => a['identifier']
           end
-		  if provider == 'identity'
-			:on_failed_registration => redirect to('/')
-		  end
         end
       end
 
