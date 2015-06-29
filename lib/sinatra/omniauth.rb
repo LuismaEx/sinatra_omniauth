@@ -132,6 +132,9 @@ module SinatraOmniAuth
           provider = a['provider']
           client_options = a[:client_options] || {}
           if key = a['key']
+            if provider == 'identity'
+              client_options[ :on_failed_registration ] = User.method( :register )
+            end
             provider provider, key, a['secret'], client_options
           else
             name = a['name'].downcase.gsub(/ /,' ')
